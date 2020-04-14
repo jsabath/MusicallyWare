@@ -73,10 +73,16 @@ class Cli
     end
 
     def preexisting_music
-
+        music = @current_user.user_music_interest
+        pp music
+        if @current_user.user_music_interest == []
+            puts "It looks like you don't have any music interests.. Go to New Music to add some!"
+        end
+        main_menu
     end
 
     def clear_music
-
+        @current_user.user_music_interest.destroy!
+        main_menu
     end
 end
