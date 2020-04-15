@@ -13,10 +13,15 @@ require 'json'
 def select_genre
     genre_hash = JSON.parse(RestClient.get("https://api.deezer.com/genre"))
     genre_array = genre_hash["data"]
-    genre_list = (genre_array.map {|i| i["name"]}).first(10)  
-    
    
-    prompt = TTY::Prompt.new
+    genre_list = (genre_array.map {|i| i["name"]}).first(10)
+    delete_list = ["All", "Reggaeton", "Dance","Alternative", "Christian"]
+    delete_list.each do |delete|
+        genre_list.delete_at(genre_list.index(delete))
+    end
+    #binding.pry
+   
+    prompt = TTY::Prompt.new 
     selection = prompt.select("Select Genre", genre_list)
     
     "#{genre_list}"
@@ -29,13 +34,19 @@ end
 
 
 
-def select_artist
-    puts "Select Artist"
+# def select_artist
+#     artist_list = MUSIC.map do |artist|
+#         artists[]
+
+#     end
+    
+    # prompt = TTY::Prompt.new 
+    # selection = prompt.select("Select Artist", artist_list)
     #if user_genre == "genre"
     
     #artist_hash = JSON.parse(RestClient.get("https://developers.deezer.com/api/artist"))
     #end
-end
+# end
 
 def select_song
     puts "Select Song"
