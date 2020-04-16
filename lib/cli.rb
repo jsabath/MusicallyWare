@@ -1,23 +1,22 @@
-require_relative 'api_methods.rb'
-require_relative 'music.rb'
-require 'pry'
-require 'rest-client'
-require 'json'
-require 'tty-prompt'
-
-
 class Cli
     attr_reader :current_user
 
-
-    def create_playlist
+    def create_playlist music_id
         if @current_user.playlist.nil?
-            @current_user.playlist = Playlist.create(:user_id => @current_user.id)
+            @current_user.playlist = music_id.map do |id| 
+                Playlist.create(:user_id => @current_user.id, music_id => id)
+            end
         end
         @current_user.playlist
     end
 
-
+    def add_to_playlist list_of_songs
+        if @playlist.nil?
+            @playlist = list_of_songs
+        else
+            @playlist += list_of_songs
+        end
+    end
 
     def saturn_image
 
@@ -49,7 +48,6 @@ class Cli
         new_username = gets.strip
         new_user = User.create({name: new_username})
         @current_user = User.find_or_create_by(name: new_username)
-        # create_user_music_interest
 
         t = Time.now
         if t < noon
@@ -71,6 +69,7 @@ class Cli
         case selection
         when "New Music"
              new_music
+             create_playlist
         when "Preexisting Music"
              preexisting_music
         when "Clear Music Tastes"
@@ -84,42 +83,92 @@ class Cli
     def new_music
         select_genre(@current_user)
         main_menu
-        # select_artist
-        # select_song
-        # if user_selection == "#{genre_method.response}"
-        #     puts "Select Artist"
-        #     puts "#{artist_method.body}"
-        # end
     end
-            
-    #         def add_song
-    #         user_choice = gets.chomp
-    #         if user_choice == "#{artist_method.response}"
-    #             puts "#{song_method.body}"
-    #             if user_pick == "#{song_method.response}"
-    #                 add_song
-    #             end
-    #         end
-        
-        
     
-
-    # def add_song
-
-    # end
 
     def preexisting_music
         music = @current_user.playlist
         pp music
-        if @current_user.playlist.length == 0
+        if @current_user.playlist.length == []
             puts "It looks like you don't have any music interests.. Go to New Music to add some!"
         end
         main_menu
     end
+
     def clear_music
         @current_user.clear_playlist
         main_menu
     end
+
+
+    
+def select_genre current_user
+    genre_list = ["Pop", "Rap", "Rock", "RnB", "Electro"]
+    prompt = TTY::Prompt.new 
+    selection = prompt.select("Select Genre", genre_list)
+    select_artist(selection, current_user)
+end
+
+def select_artist genre, current_user
+    puts "genre selected" + genre
+
+    artist_list = MUSIC["#{genre.downcase}_artists"]
+    puts artist_list
+    prompt = TTY::Prompt.new 
+    selection = prompt.select("Select Artist", artist_list)
+    select_songs(genre, selection, current_user)
+end
+
+def select_songs genre, artist, current_user
+    puts genre
+    puts artist
+    genre_songs = MUSIC["#{genre.downcase}_songs"]
+    artist_songs = genre_songs[artist]
+    id = artist_songs.map do |song|
+        song.id
+    end
+    current_user.add_to_playlist(artist_songs)
+    create_playlist(id)
+end
+
+
+MUSIC = {
+"pop_artists" => ["Dua Lipa", "The Weeknd", "Doja Cat", "Lady Gaga", "Billie Eilish"],
+"pop_songs" => {"Dua Lipa" => ["Don't Start Now","Physical","Beak My Heart"],
+"The Weeknd" => ["Blinding Lights","In Your Eyes","After Hours"],
+"Doja Cat" => ["Say So","Boss Bitch","Like That"],
+"Lady Gaga" => ["Stupid Love","Shallow","Bad Romance"], 
+"Billie Eilish" => ["everything i wanted","bad guy","No Time To Die"]},
+
+
+"rap_artists" => ["Roddy Rich", "Drake", "Travis Scott", "BROCKHAMPTON" , "Lil Uzi Vert"],
+"rap_songs" => {"Roddy Rich" => ["The Box","High Fashion (feat. Mustard)", "Start Wit Me (feat. Gunna)"],
+"Drake" => ["Life Is Good (feat. Future)", "Toosie Slide", "Mob Ties"],
+"Travis Scott" => ["HIGHEST IN THE ROOM", "Can't Say","Sicko Mode"], 
+"BROCKHAMPTON" => ["Sugar","Gold", "Sweet"], 
+"Lil Uzi Vert" => ["Pop", "P2", "Futsal Shuffle 2020"]},
+
+"rock_artists" => ["Twenty One Pilots", "Machine Gun Kelly", "Imagine Dragons", "Oliver Tree" , "The Killers"],
+"rock_songs" => {"Twenty One Pilots" => ["Stressed Out","Level of Concern", "Ride"],
+"Machine Gun Kelly" => ["I Think I'm OKAY","Candy","Home"],
+"Imagine Dragons" => ["Believer","Thunder","Bad Liar"],
+"Oliver Tree" => ["Alien Boy","Let Me Down","Miracle Man"], 
+"The Killers" => ["Mr.Brightside","When You Were Young","Caution"]},
+
+"rnb_artists" => ["Doja Cat", "PARTYNEXTDOOR", "The Weeknd", "Khalid" , "6lack"],
+"rnb_songs" => {"Doja Cat" => ["Juicy", "Like That (feat. Gucci Mane)", "Say So"],
+"PARTYNEXTDOOR" => ["LOYAL (feat. Drake", "SPLIT DECISION", "BELIEVE IT"],
+"The Weeknd" => ["Snowchild", "The Morning","Same Old Song"], 
+"Khalid" => ["Know Your Worth", "Better", "Location"], 
+"6lack" => ["Pretty Little Fears (feat. J. Cole)", "East Atlanta Love Letter", "Balenciaga Challenge"]},
+
+"electro_artists" => ["KSHMR" , "ILLENIUM", "KAAZE", "Flux Pavilion", "Diskord"],
+"electro_songs" => {"KSHMR" => ["My Best Life","Alone","Power"],
+"ILLENIUM" => ["Takeaway","In Your Arms","Feel Good"],
+"KAAZE" => ["I Should Have Walked Away","Devil Inside Me","This Is Love"],
+"Flux Pavilion" => ["Savage","I Can't Stop","Room to Fall"],
+"Diskord" => ["Beggers","U&I","Blood Brother"]}
+}
 
 end
 
