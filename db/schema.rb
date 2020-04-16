@@ -12,24 +12,23 @@
 
 ActiveRecord::Schema.define(version: 2020_04_13_210109) do
 
-  create_table "music", force: :cascade do |t|
+  create_table "musics", force: :cascade do |t|
     t.string "song"
     t.string "artist"
-    t.string "album"
     t.string "genre"
   end
 
-  create_table "playlist", force: :cascade do |t|
+  create_table "playlists", force: :cascade do |t|
     t.integer "user_id"
     t.integer "music_id"
-    t.index ["music_id"], name: "index_playlist_on_music_id"
-    t.index ["user_id"], name: "index_playlist_on_user_id"
+    t.index ["music_id"], name: "index_playlists_on_music_id"
+    t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
   end
 
-  add_foreign_key "playlist", "musics"
-  add_foreign_key "playlist", "users"
+  add_foreign_key "playlists", "musics"
+  add_foreign_key "playlists", "users"
 end
