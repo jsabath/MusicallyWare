@@ -7,13 +7,13 @@ class Cli
         end
     end
 
-    def add_to_playlist list_of_songs
-        if @playlist.nil?
-            @playlist = list_of_songs
-        else
-            @playlist += list_of_songs
-        end
-    end
+    # def add_to_playlist list_of_songs
+    #     if @playlist.nil?
+    #         @playlist = list_of_songs
+    #     else
+    #         @playlist += list_of_songs
+    #     end
+    # end
 
     def saturn_image
 
