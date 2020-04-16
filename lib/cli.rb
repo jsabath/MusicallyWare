@@ -10,12 +10,12 @@ class Cli
     attr_reader :current_user
 
 
-    # def create_user_music_interest
-    #     if @current_user.user_music_interest == nil
-    #         @current_user.user_music_interest = User_music_interest.create(:user_id => @current_user.id)
-    #     end
-    #     @current_user.user_music_interest
-    # end
+    def create_playlist
+        if @current_user.playlist.nil?
+            @current_user.playlist = Playlist.create(:user_id => @current_user.id)
+        end
+        @current_user.playlist
+    end
 
 
 
@@ -59,6 +59,7 @@ class Cli
         else
             puts "Good Evening, #{new_username}."
         end
+        main_menu
     end
 
     
@@ -81,9 +82,10 @@ class Cli
     
 
     def new_music
-        select_genre
-        select_artist
-        select_song
+        select_genre(@current_user)
+        main_menu
+        # select_artist
+        # select_song
         # if user_selection == "#{genre_method.response}"
         #     puts "Select Artist"
         #     puts "#{artist_method.body}"
@@ -102,21 +104,22 @@ class Cli
         
     
 
-    def add_song
+    # def add_song
 
-    end
+    # end
 
     def preexisting_music
-        music = @current_user.user_music_interest
+        music = @current_user.playlist
         pp music
-        if @current_user.user_music_interest == []
+        if @current_user.playlist.length == 0
             puts "It looks like you don't have any music interests.. Go to New Music to add some!"
         end
         main_menu
     end
     def clear_music
-        @current_user.user_music_interest.destroy!
+        @current_user.clear_playlist
         main_menu
     end
 
 end
+
