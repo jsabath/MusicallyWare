@@ -4,7 +4,6 @@ class Cli
     def create_playlist songs
         songs.each do |song|
             playlist = Playlist.create(user_id: @current_user.id, music_id: song.id)
-            p playlist
         end
     end
 
@@ -84,12 +83,6 @@ class Cli
     
 
     def preexisting_music
-        p "current_user"
-        p @current_user
-        p "current_user_musics"
-        p @current_user.musics
-        p "current_user_playlists"
-        p @current_user.playlists
         music = Music.joins(:playlists).where("playlists.user_id = ?", @current_user.id)
         pp music
         if music.length == 0
@@ -99,10 +92,7 @@ class Cli
     end
 
     def clear_music
-        p Playlist.all
-        p @current_user.id
         Playlist.where(user_id: @current_user.id).each do |playlist|
-            p playlist
             playlist.destroy!
         end
         main_menu
@@ -130,8 +120,6 @@ class Cli
         songs = artist_songs.map do |song|
             Music.create(song: song, genre: genre, artist: artist)
         end
-        p songs
-        p current_user
         create_playlist(songs)
     end
 
