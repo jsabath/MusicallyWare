@@ -12,7 +12,9 @@ Now, you can add all the songs from your favorite artists! (If they are in our p
 You'll have atleast full minutes of slight entertainment today! Now offered on the Aqqle store. Age restrictions may apply. Please do not contact anyone for details.
 
 1. Usage
+
 To run:
+
 You must have ruby installed to run this program.
 Download the code from here. Above, click "Clone or Download".
 Once Cloned into your Terminal, cd to the MusicallyWare directory.
@@ -44,8 +46,10 @@ Clear Music Tastes will delete all of your previous songs on your playlist if yo
 This app does not contain any settings.
 
 4. Licensing
+
 This code is considered public domain. You are free to copy it, but you may not monetize it. 
 The following people who created this program:
+
 Justin Sabath
 Kathryn Clark
 
