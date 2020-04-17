@@ -13,45 +13,45 @@ You'll have atleast full minutes of slight entertainment today! Now offered on t
 
 1. Usage
 
-To run:
+   To run:
 
-You must have ruby installed to run this program.
-Download the code from here. Above, click "Clone or Download".
-Once Cloned into your Terminal, cd to the MusicallyWare directory.
-Type ruby runner.rb in the command line.
+   You must have ruby installed to run this program.
+   Download the code from here. Above, click "Clone or Download".
+   Once Cloned into your Terminal, cd to the MusicallyWare directory.
+   Type ruby runner.rb in the command line.
  
-This code uses the following Ruby Gems:
-TTY Prompt
-Sqlite3
-ActiveRecord
+   This code uses the following Ruby Gems:
+   TTY Prompt
+   Sqlite3
+   ActiveRecord
  
 2. Interface
 
-Once the app is opened, it will ask for your username. Once you create your username, it will open with a 3 part menu: New Music, Preexisting Music, Clear Music Tastes. You can navigate using the up and down arrow keys and can select a menu option by hitting Enter. 
+   Once the app is opened, it will ask for your username. Once you create your username, it will open with a 3 part menu:      New Music, Preexisting Music, Clear Music Tastes. You can navigate using the up and down arrow keys and can select a menu    option by hitting Enter. 
 
 2.1 New Music
 
-New Music enables you to search through our selection of Top artists within the top 5 most popular genres. Once you select an Artist, the songs are automatically transferred to your playlist for viewing pleasure. 
+   New Music enables you to search through our selection of Top artists within the top 5 most popular genres. Once you          select an Artist, the songs are automatically transferred to your playlist for viewing pleasure. 
 
 2.2 Preexisting Music
 
-Contains all of your previous music choices.
+   Contains all of your previous music choices.
 
 2.3 Clear Music Tastes
 
-Clear Music Tastes will delete all of your previous songs on your playlist if you want to start from scratch.
+   Clear Music Tastes will delete all of your previous songs on your playlist if you want to start from scratch.
 
 3. Settings 
 
-This app does not contain any settings.
+   This app does not contain any settings.
 
 4. Licensing
 
-This code is considered public domain. You are free to copy it, but you may not monetize it. 
-The following people who created this program:
+   This code is considered public domain. You are free to copy it, but you may not monetize it. 
+   The following people who created this program:
 
-Justin Sabath
-Kathryn Clark
+   Justin Sabath
+   Kathryn Clark
 
 
  
