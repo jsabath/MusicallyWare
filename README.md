@@ -1,7 +1,7 @@
-MusicallyWare App
+# MusicallyWare App
 
 
-Overview
+## Overview
 
 Have you never heard of spotify? Do you not know what apple music is? Are you tired of having to pay for or even LISTEN to music?
 
@@ -11,7 +11,7 @@ Now, you can add all the songs from your favorite artists! (If they are in our p
 
 You'll have atleast full minutes of slight entertainment today! Now offered on the Aqqle store. Age restrictions may apply. Please do not contact anyone for details.
 
-1. Usage
+## 1. Usage
 
    To run:
 
@@ -25,33 +25,33 @@ You'll have atleast full minutes of slight entertainment today! Now offered on t
    Sqlite3
    ActiveRecord
  
-2. Interface
+## 2. Interface
 
    Once the app is opened, it will ask for your username. Once you create your username, it will open with a 3 part menu:      New Music, Preexisting Music, Clear Music Tastes. You can navigate using the up and down arrow keys and can select a menu    option by hitting Enter. 
 
-   2.1 New Music
+   ### 2.1 New Music
 
    New Music enables you to search through our selection of Top artists within the top 5 most popular genres. Once you          select an Artist, the songs are automatically transferred to your playlist for viewing pleasure. 
 
-   2.2 Preexisting Music
+   ### 2.2 Preexisting Music
 
    Contains all of your previous music choices.
 
-   2.3 Clear Music Tastes
+   ### .3 Clear Music Tastes
 
    Clear Music Tastes will delete all of your previous songs on your playlist if you want to start from scratch.
 
-3. Settings 
+## 3. Settings 
 
    This app does not contain any settings.
 
-4. Licensing
+## 4. Licensing
 
    This code is considered public domain. You are free to copy it, but you may not monetize it. 
    The following people who created this program:
 
-   Justin Sabath
-   Kathryn Clark
+  ### Justin Sabath
+  ### Kathryn Clark
 
 
  
