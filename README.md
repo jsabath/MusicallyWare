@@ -1,6 +1,6 @@
 MusicallyWare App
 
-Have you never heard of spotify? Do you not know what apple music is? Are you tired of hav to pay for or even LISTEN to music?
+Have you never heard of spotify? Do you not know what apple music is? Are you tired of having to pay for or even LISTEN to music?
 
 Well, LOOK NO FURTHER, introducing MusicallyWare app! Complicated long lists of songs are are thing of the past! With our easy access 3 step menu, you can add music with ease!
 
