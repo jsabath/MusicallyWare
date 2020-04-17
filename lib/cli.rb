@@ -50,8 +50,6 @@ class Cli
         main_menu
     end
 
-    
-
     def main_menu
         prompt = TTY::Prompt.new
         selection = prompt.select("How may I assist you today?", ["New Music", "Preexisting Music", "Clear Music Tastes"])
@@ -65,8 +63,6 @@ class Cli
              clear_music
         end
     end
-    
-
     
 
     def new_music

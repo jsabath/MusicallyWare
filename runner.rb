@@ -6,13 +6,3 @@ musically = Cli.new
 
 musically.welcome
 
-# musically.select_genre
-
-
-#musically.main_menu
-
-# genre.new_music
-
-# binding.pry
-
-
